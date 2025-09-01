@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = ["charming", "charming_macros", "gallery"]
+exclude = [
+  "examples/dioxus-web-demo",
+  "examples/dioxus-desktop-demo",
+  "examples/leptos-demo",
+  "examples/sycamore-demo",
+  "examples/yew-demo",
+]

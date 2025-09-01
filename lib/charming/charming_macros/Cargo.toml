@@ -1,0 +1,24 @@
+[package]
+name = "charming_macros"
+description = "Procedural macros used in charming"
+version = "0.1.0"
+edition = "2024"
+repository = "https://github.com/yuankunzhang/charming"
+documentation = "https://github.com/yuankunzhang/charming"
+keywords = ["echarts", "visualization", "chart", "plot"]
+categories = ["visualization", "graphics"]
+license = "MIT OR Apache-2.0"
+readme = "../README.md"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1.0.95"
+quote = "1.0.40"
+syn = { version = "2.0.101", features = ["full"] }
+
+[dev-dependencies]
+charming = { path = "../charming" }
+serde = { version = "1.0", features = ["derive"] }
+serde_with = "3.11.0"
