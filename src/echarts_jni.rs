@@ -1,6 +1,6 @@
 use std::path::Path;
 
-use charming::{ImageFormat, ImageRenderer};
+use charming::{Chart, ImageFormat, ImageRenderer};
 use jni::JNIEnv;
 use jni::objects::*;
 use jni::sys::jint;
@@ -48,12 +48,15 @@ pub unsafe extern "C" fn Java_top_magicpotato_Echarts_save(
         .into();
     let mut renderer = ImageRenderer::new(width as u32, height as u32);
 
+    // 反序列化为 Chart
+    let chart = unwarp_exception!(serde_json::from_str::<Chart>(&data), env, ());
+
     let path = Path::new(&path);
     if path.extension().expect("无法获取文件扩展名") == "svg" {
-        unwarp_exception!(renderer.save_by_json(data, path), env, ());
+        unwarp_exception!(renderer.save(&chart, path), env, ());
     } else {
         let extension = unwarp_exception!(parse_extension_by_path(path), env, ());
-        unwarp_exception!(renderer.save_format_by_json(extension, data, path), env, ());
+        unwarp_exception!(renderer.save_format(extension, &chart, path), env, ());
     }
 }
 
@@ -77,13 +80,20 @@ pub unsafe extern "C" fn Java_top_magicpotato_Echarts_render<'local>(
         .into();
     let mut renderer = ImageRenderer::new(width as u32, height as u32);
 
+    // 反序列化为 Chart
+    let chart = unwarp_exception!(
+        serde_json::from_str::<Chart>(&data),
+        env,
+        JByteArray::default()
+    );
+
     if extension == "svg" {
-        let x = unwarp_exception!(renderer.render_by_json(data), env, JByteArray::default());
+        let x = unwarp_exception!(renderer.render(&chart), env, JByteArray::default());
         env.byte_array_from_slice(x.as_bytes()).unwrap()
     } else {
         let extension = unwarp_exception!(parse_extension(&extension), env, JByteArray::default());
         let x = unwarp_exception!(
-            renderer.render_format_by_json(extension, data),
+            renderer.render_format(extension, &chart),
             env,
             JByteArray::default()
         );
