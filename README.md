@@ -4,7 +4,8 @@
 # 关于libc版本
 项目使用github actions构建的，动态链接库依赖于libc版本的影响，可能不通用。如果你构建出来了某个平台某个libc版本的链接库欢迎提交pr 方便其他人使用。
 
-动态链接库存放在 artifact 目录中
+~~动态链接库存放在 artifact 目录中~~
+从0.6.0开始 动态库从release中获取
 
 
 charming 0.6 版本将：
