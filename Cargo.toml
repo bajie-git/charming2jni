@@ -10,7 +10,8 @@ crate-type = ['cdylib']
 
 [dependencies]
 charming = { features = ["ssr", "ssr-raster"], git = "https://github.com/yuankunzhang/charming", rev = "625da31146c051664dbc83fa3912f30d1ec53352" }
-jni = "0.21"
+jni = "0.22"
 thiserror = "2.0"
 #serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+#anyhow = "1"
