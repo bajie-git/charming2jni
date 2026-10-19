@@ -9,7 +9,7 @@ edition = "2024"
 crate-type = ['cdylib']
 
 [dependencies]
-charming = { version = "0.6.0", features = ["ssr", "ssr-raster"] }
+charming = { features = ["ssr", "ssr-raster"], git = "https://github.com/yuankunzhang/charming", rev = "625da31146c051664dbc83fa3912f30d1ec53352" }
 jni = "0.21"
 thiserror = "2.0"
 #serde = { version = "1.0", features = ["derive"] }
