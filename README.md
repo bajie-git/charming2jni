@@ -18,5 +18,5 @@ charming 0.6 版本将：
 
 ## 261019
 deno_core官方在0.360之后的版本修复了动态库编译问题  
-charming master最新代码deno_core已经升级到了0.4+版本，等他发布版本就可以直接使用了  
+charming master最新代码deno_core已经升级到了0.4+版本，等他发布版本就可以直接使用了(目前基于master最新分支打包已经成功)  
 预计新版本连echart也会同步升级，等待新版本吧
