@@ -13,10 +13,10 @@ jobs:
   build-linux-x64:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v4.1.1
+    - uses: actions/checkout@v7
     - name: Build
       run: cargo build --release -v
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: linux-artifact
         path: target/release/*.so
@@ -24,10 +24,10 @@ jobs:
   build-linux-arm:
     runs-on: ubuntu-22.04-arm
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v7
       - name: Build
         run: cargo build --release -v
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: linux-artifact
           path: target/release/*.so
@@ -35,10 +35,10 @@ jobs:
   build-windows:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4.1.1
+    - uses: actions/checkout@v7
     - name: Build
       run: cargo build --release -v
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: windows-artifact
         path: target/release/*.dll
@@ -46,10 +46,10 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v7
       - name: Build
         run: cargo build --release -v
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: macos-artifact
           path: target/release/*.dylib
